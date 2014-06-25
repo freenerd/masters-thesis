@@ -1,0 +1,14 @@
+// cat qualitative-fault-tree-example.dot | dot -T pdf -o qualitative-fault-tree-example.pdf
+
+digraph deps {
+  node [shape="record" style="filled" color="grey79" fillcolor="grey79"];
+  //edge [arrowhead=none];
+  splines=true;
+  nodesep=0.6;
+  ranksep=1;
+
+  "A" -> "B"
+  "D" -> "B"
+  "D" -> "E"
+  "E" -> "D"
+}

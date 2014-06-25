@@ -1,0 +1,13 @@
+# What?
+
+My master thesis in latex. Based on a template from [Peter Tröger](http://www.troeger.eu/teaching).
+
+Read a blog post about the thesis on http://freenerd.de/masters-thesis/
+
+# How to build
+
+With pdflatex. With MacTex: `texdist "pdflatex master_thesis.tex"`. And there is probably some bibtex magic involved, but who understands that anyways?
+
+# License
+
+This work is licensed under a [Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License](https://creativecommons.org/licenses/by-nc-nd/4.0/).

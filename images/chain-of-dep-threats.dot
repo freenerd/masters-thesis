@@ -1,0 +1,29 @@
+digraph chain {
+  rankdir=LR;
+  node [shape=plaintext]
+
+  subgraph "clustersys1" {
+    label="System A";
+    //style=filled;
+    //color=lightgrey;
+
+    f1 [label="Fault"];
+    e1 [label="Error"];
+    fail1 [label="Failure"];
+
+    f1 -> e1;
+    e1 -> fail1;
+  }
+
+  fail1 -> f2[minlen=2.5];
+
+  subgraph "clustersys2" {
+    label="System B";
+    f2 [label="Fault"];
+    e2 [label="Error"];
+    fail2 [label="Failure"];
+
+    f2 -> e2;
+    e2 -> fail2;
+  }
+}

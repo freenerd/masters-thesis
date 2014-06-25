@@ -1,0 +1,22 @@
+%!TEX root = ../master_thesis.tex
+
+\chapter{Summary}
+\label{chapter:summary}
+% Motivation
+In this work we showed approaches for modeling dependability in microservice architectures and applied these in a case study with the ``Software as a Service" company ``SoundCloud''. When building a software system in the microservice architectural style, engineers face the problem of assessing its dependability attributes. In a microservice architecture many individual applications work together as one software system. These applications depend on each other, which leads to the possibility of failures propagating through the system.
+
+%What did you do
+
+In this thesis we assessed to what extend dependency graphs and fault trees could be used to model dependability of microservice architectures. As a basis we proposed our own terminology model for describing microservice architectures. Based on that model, we constructed dependency graphs, transformed them automatically to qualitative fault trees and investigated quantifying the fault trees with failure probabilities.
+
+% How did it go?
+
+In our investigations, we found dependency graphs to be a valuable tool for visualizing applications and their dependencies in microservice architectures. Dependency graphs turned out to be a better visualization of service dependencies than qualitative fault trees, due to their significantly smaller size. For constructing dependency graphs from a deployed microservice architecture we investigated four methods. Our qualitative evaluation did not reveal a clear preference for a specific method, but we see three of them (\emph{semi-automatic creation from manual annotations}, \emph{from deployment configuration}, \emph{from network traffic}) as viable methods.
+
+We believe quantitative fault trees may be used for assessing the impact of architectural change on the dependability of applications in microservice architectures. In this thesis we have proven the possibility to construct them for a deployed microservice architecture. We showed four possible ways for gathering failure probabilities for applications. We found the methods of \emph{relative code churn} and \emph{historical availability from production traffic} to be promising.
+
+All methods we described were executed in the context of the case study with ``SoundCloud'' and therefore have been tested with real data in a productively deployed microservice architecture.
+
+We believe that there is a tendency to utilize the microservice architectural style, since it allows for building big and complex software systems by dividing and encapsulating business concerns into individual services. Furthermore it has proven in the industry to be a viable way of constructing ``Software as a Service" systems. Therefore we believe the microservice architectural style to grow in importance in the future. With that the problem of assessing dependability of such an architecture is raised. In this work we specifically addressed the problem of low visibility for dependencies between applications. We believe that this improves the discussion of dependability in microservice architectures, but many more subjects of that discussion remain open for further investigation. We look forward to the future work in industry and academia on these topics.
+
+\scalebox{.02}{Zweifel. Conquered at last.}

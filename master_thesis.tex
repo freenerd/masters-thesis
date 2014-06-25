@@ -1,0 +1,92 @@
+\documentclass[
+  a4paper,      % A4 document
+  openbib,      % openbib reference style
+  DIV12,        % fontsize
+  2.5headlines, % headlines are 2.5 times the normal line size
+  headings=big, % headings are printed bold
+  abstracton,   % make abstract headings
+  twoside,      % enable two sided printing
+  titlepage,    % make dedication and abstract titlepages
+  openright     % start chapters on right pages
+]{scrreprt}
+
+\usepackage{util/thesis}
+% Definition of:
+%   packages in util/thesis.sty
+% commands in util/commands.tex
+% styling  in util/document.tex
+% colors   in util/colors.tex
+
+% ABOUT
+\newcommand{\hpiauthor}{Johan Uhle}
+\newcommand{\hpistudentid}{}
+\newcommand{\hpititle}{On Dependability Modeling in a Deployed Microservice Architecture}
+\newcommand{\hpisubtitle}{}
+\newcommand{\hpidedication}{\small{I want to thank Peter Tröger for interesting me in the subject of dependability and sending me on the journey for this thesis. I want to thank all engineers at SoundCloud who answered my relentlessly naïve questions with admirable calmness and commitment. I especially want to thank Peter Bourgon for embedding me in his team and work, and Alexander Grosse~ for allowing me to execute my research with the company. I want to thank Nxtbgthng for hosting me in their office, when I finished writing this thesis. I want to thank Lea Voget for helping me with support and proof-reading, as well as Hannes Tydén for proof-reading.}}
+\newcommand{\hpisupervisor}{Dr. Peter Tröger}
+\newcommand{\hpichair}{Operating Systems and Middleware Group}
+% end ABOUT
+
+% \footnote{\url{http://www.soundcloud.com/}}
+% \footnote{\url{http://www.troeger.eu/}}
+% \footnote{\url{http://bourgon.org}}
+% \footnote{\url{http://alexandergrosse.com/}}
+% \footnote{\url{http://nxtbgthng.com}}
+
+\addbibresource{bibtex/master-references}
+\addbibresource{bibtex/rfc}
+\DefineBibliographyStrings{english}{%
+urlseen = {Retrieved},
+}
+
+% DOCUMENT
+\begin{document}
+  \selectlanguage{english}
+
+  \include{content/titlepage}
+  \include{content/disclaimer}
+  \cleardoublepage
+  \include{content/abstract}
+
+  % TABLE OF CONTENT
+  \cleardoublepage
+  \frontpagination % use roman pagination for the introduction pages
+  \tableofcontents
+  \listoffigures
+  \listoftables
+  \begin{titlepage}
+    \lstlistoflistings
+  \end{titlepage}
+  \cleardoublepage
+  % end TABLE OF CONTENT
+
+  \pagination % use regular arabic pagination for content
+  %%%%%%%
+  % Add your files here
+  % \include{path/to/file}
+  \include{content/introduction}
+  \begingroup
+    % these belong together and shall not be seperated by \clearpage
+    % which \include does insert by default
+    % https://tex.stackexchange.com/questions/131460/remove-pagebreak-after-a-chapter-only-for-one-chapter
+    \let\clearpage\relax
+    \include{content/background}
+    \include{content/background_dependability_theory}
+  \endgroup
+  \include{content/background_software_development_environment}
+  \include{content/case_study}
+  \include{content/dependency_graph}
+  \include{content/qualitative_fault_trees}
+  \include{content/quantified_fault_trees}
+  \include{content/discussion}
+  \include{content/summary}
+  % \include{content/notes}
+
+  % BIBLIOGRAPHY
+  \cleardoublepage
+  \renewcommand{\bibname}{References}
+  \renewcommand{\refname}{References}
+  \addcontentsline{toc}{chapter}{References}
+  \printbibliography
+  % end BIBLIOGRAPHY
+\end{document}

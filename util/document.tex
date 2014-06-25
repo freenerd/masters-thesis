@@ -1,0 +1,51 @@
+% HPIHEADER
+\pagestyle{scrheadings}
+\automark[chapter]{chapter}
+\renewcommand\chaptermark[1]{\markboth{#1}{#1}}
+\ohead{}
+\chead{\headmark}
+\ihead{}
+\setheadsepline{1.0pt}[\color{hpigrey}]
+
+\geometry{
+  a4paper,
+  top=55mm,
+  right=35mm,
+  bottom=40mm,
+  left=40mm,
+  headsep=10mm,
+  footskip=22mm
+}
+\linespread {1.25}
+\setlength{\parindent}{0cm}
+\setlength{\parskip}{0.25cm}
+
+\lstset{
+  % BASIC STYLE
+  aboveskip=25pt,
+  basicstyle=\ttfamily,
+  % KEYWORDS
+  keywordstyle=\color{RoyalBlue}\textbf,
+  % STRING
+  stringstyle=\color{Green},
+  % COMMENT
+  commentstyle=\color{RedOrange}\textit,
+  % LINES
+  xleftmargin=15pt,
+  xrightmargin=-15pt,
+  numbers=left,
+  stepnumber=1,
+  numberstyle=\zebra\tiny\color{black!60},
+  tabsize=4,
+  % CAPTION
+  captionpos=b,
+  % FRAME
+  frame=tb,
+  framexleftmargin=15.5pt,
+  framexrightmargin=-15.5pt,
+  framesep=0pt
+}
+
+\interfootnotelinepenalty=10000
+\hyphenpenalty=5000
+\tolerance=1000

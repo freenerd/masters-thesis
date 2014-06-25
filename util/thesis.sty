@@ -1,0 +1,64 @@
+\ProvidesPackage{util/thesis}
+
+% LATEX PROCESSOR
+\usepackage{supertabular} % improves the debug output (warnings, errors, ...)
+
+% LANGUAGE AND ENCODING
+\usepackage[english, ngerman]{babel}  % or \usepackage[english]{babel} for national
+\usepackage[utf8]{inputenc}     % UTF-8 encoding
+\usepackage[T1]{fontenc}      % encoding of the font
+
+% FONTS
+\usepackage{helvet}   % import Helvetica font
+\usepackage{courier}  % import Courier font (e.g. for code)
+\usepackage{eurosym}  % import the Euro sign
+
+% DOCUMENT CUSTOMIZATION
+\usepackage{geometry}     % change the pages geometry (e.g. margins)
+\usepackage[automark]{scrpage2} % fit footnotes to page style
+\usepackage{mathpazo}       % improve typesetting of formulas
+
+% ELEMENTS
+\usepackage{fancybox} % nice looking boxes
+\usepackage{listings} % use listing for code...
+\usepackage{amsmath}  % easier formulars
+\usepackage{array}    % better array environment (indent insides formulas)
+\usepackage{graphicx} % include graphics
+\usepackage{wrapfig}
+\usepackage[      % more colors
+  usenames,
+  dvipsnames
+]{xcolor}
+\usepackage{multirow} % table spanning
+\usepackage{colortbl} % color cells of a table
+\usepackage{varioref} % smarter references, use \vref instead of \ref
+\usepackage[
+  backend=bibtex,
+  useprefix=true,
+  hyperref=true,
+  url=true,
+  isbn=true,
+  style=numeric,
+  sorting=none,
+  maxcitenames=3,
+  maxbibnames=100,
+  block=none
+]{biblatex} % different bib styles
+\usepackage{makeidx}  % print an index
+\usepackage{tabularx} % tables with fixed width and variable columns \begin{tabularx}
+\usepackage{float}    % allow text beside narrow graphics
+\usepackage[      % allow references to resources in the web
+  pdftex,
+  colorlinks,
+  linktocpage,
+  linkcolor=black,
+  citecolor=black,
+  urlcolor=black
+]{hyperref}
+\usepackage{hyphenat}
+\usepackage{chngpage}
+\usepackage{afterpage} % single pages for big figures
+
+\input{util/colors.tex}
+\input{util/commands.tex}
+\input{util/document.tex}

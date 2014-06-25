@@ -1,0 +1,141 @@
+// dot arch-evolution.dot -Tpdf -oarch-evolution.pdf && open arch-evolution.pdf
+
+digraph arch {
+  node [shape="record" style="filled" color="grey79" fillcolor="grey79" width=1.2];
+  //clusterrank="local";
+  //nodesep=1;
+  //splines=line;
+
+  subgraph "clustersep11" {
+    style="invisible";
+  subgraph "clustersep12" {
+    style="invisible";
+
+    subgraph "clustermonolith" {
+      label="1. Monolithic application";
+      style="solid";
+
+      // Monolith
+      subgraph "clustersys1_clients" {
+        label="Clients";
+        //style=filled;
+        //color=lightgrey;
+
+        //f1 [label="Fault"];
+        //e1 [label="Error"];
+        //fail1 [label="Failure"];
+
+        client1_1 [label="Client"];
+        client1_2 [label="Client"];
+      }
+
+        client1_2 -> monolith1;
+        client1_1 -> monolith1;
+        client1_1 -> dummy1_1 [style="invis"];
+
+      subgraph "clustersys1_platform" {
+        label="Platform";
+        //style=filled;
+        //color=lightgrey;
+
+        dummy1_1  [style="invisible"];
+        dummy1_2  [style="invisible" width=2.65];
+        dummy1_1 -> monolith1 [style="invis"];
+        monolith1 -> dummy1_2 [style="invis"];
+        monolith1 [label="Monolith" width=2 height=2];
+      }
+    }
+  }}
+
+  subgraph "clustersep21" {
+    style="invisible";
+  subgraph "clustersep22" {
+    style="invisible";
+
+    subgraph "clustersplit" {
+      label="2. Splitting the monolith";
+      style="solid";
+
+      subgraph "clustersys2_clients" {
+        label="Clients";
+        //style=filled;
+        //color=lightgrey;
+
+        //f1 [label="Fault"];
+        //e1 [label="Error"];
+        //fail1 [label="Failure"];
+
+        client2_1 [label="Client"];
+        client2_2 [label="Client"];
+      }
+
+        client2_2 -> monolith2;
+        client2_2 -> app2_2;
+        client2_1 -> monolith2;
+
+      subgraph "clustersys2_platform" {
+        label="Platform";
+        rankdir=LR;
+        //style=filled;
+        //color=lightgrey;
+
+        dummy2_1 [style="invisible" width=1.2];
+        monolith2 -> dummy2_1 [style="invis"];
+
+        monolith2 [label="Monolith" width=1.5 height=1.5];
+        app2_2      [label="Application"];
+        app2_3      [label="Application"];
+
+        monolith2 -> app2_3;
+        app2_2 -> monolith2;
+      }
+    }
+  }}
+
+  // full microservice
+  subgraph "clustersep31" {
+    style="invisible";
+  subgraph "clustersep32" {
+    style="invisible";
+
+    subgraph "clustermicroservice" {
+      label="3. Microservice architecture";
+      style="solid";
+
+      subgraph "clustersys3_clients" {
+        label="Clients";
+        //style=filled;
+        //color=lightgrey;
+
+        //f1 [label="Fault"];
+        //e1 [label="Error"];
+        //fail1 [label="Failure"];
+
+        client3_1 [label="Client"];
+        client3_2 [label="Client"];
+      }
+
+        //client3_2 -> monolith3;
+        client3_2 -> app3_2;
+        client3_1 -> app3_4;
+        client3_1 -> app3_2;
+
+      subgraph "clustersys3_platform" {
+        label="Platform";
+        rankdir=LR;
+        //style=filled;
+        //color=lightgrey;
+
+        monolith3 [label="Monolith"];
+        app3_2      [label="Application"];
+        app3_3      [label="Application"];
+        app3_4      [label="Application"];
+
+        monolith3 -> app3_3;
+        app3_2 -> monolith3;
+        app3_4 -> monolith3;
+        app3_2 -> app3_3;
+      }
+    }
+  }}
+}

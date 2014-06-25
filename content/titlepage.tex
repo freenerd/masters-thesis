@@ -1,0 +1,33 @@
+\hypersetup{
+  pdftitle  = {\hpititle},
+  pdfsubject  = {Master's Thesis},
+  pdfauthor = {\hpiauthor},
+  pdfcreator  = {PDFLaTeX},
+  pdfproducer = {LaTeX}
+}
+
+\begin{titlepage}
+  \titlehead{
+    \centering
+    \includegraphics[height=4cm]{images/university_logos.pdf}
+  }
+  \subject{Master's Thesis}
+  \title{\hpititle}
+  \subtitle{\hpisubtitle}
+  \author{
+    \textbf{Author}\\
+    \hpiauthor\\
+    \emph{\hpistudentid}
+  }
+  \date{June 25, 2014}
+  \publishers{
+    \textbf{Supervisor}\\
+    \hpisupervisor\\
+    \emph{\hpichair}
+  }
+  \ifx\hpidedication\empty
+  \else
+    \dedication{\hpidedication}
+  \fi
+\end{titlepage}
+\maketitle

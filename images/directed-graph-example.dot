@@ -1,0 +1,14 @@
+// cat directed-graph-example.dot | dot -T pdf -o directed-graph-example.pdf
+
+digraph deps {
+  node [shape="record" style="filled" color="grey79" fillcolor="grey79"];
+  //edge [arrowhead=none];
+  splines=true;
+  nodesep=0.6;
+  ranksep=1;
+
+  "Application A" -> "Application B"
+  "Application A" -> "Application C"
+  "Application B" -> "Application D"
+}
+

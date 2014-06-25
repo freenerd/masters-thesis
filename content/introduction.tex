@@ -1,0 +1,27 @@
+%!TEX root = ../master_thesis.tex
+
+\chapter{Introduction}
+
+In recent years the \emph{microservice architectural style} has become popular for building software systems. Especially companies with ``Software as a Service" products like Netflix~\cite{cockcroftqcon2014}, Twitter~\cite{twittersoa} and Amazon~\cite{amazonservices} utilize the style. A microservice architecture realizes a single application as many small individual applications which communicate over a network. Each application has its own software development lifecycle. This decoupling allows many small teams to work on individual applications. All applications then converge to deliver one software product to the users, who perceive the whole architecture as one single system.
+
+One of the objectives of a software system is to provide a dependable and failure-free experience to the user. A system may never be ``completely dependable''. Instead dependability is a trade off between a dependability goal and the cost needed to achieve it. Defining and measuring these dependability goals requires structured approaches.
+
+Given that a microservice architecture consists of many individual applications, these may also fail individually. This leads to the questions of how these individual failures manifest themselves and how they influence other applications in the architecture. How do failures propagate through the systems? How do they influence the end user experience? We believe that understanding and modeling the dependencies between applications is a crucial part of understanding the dependability of a microservice architecture.
+
+In this thesis, we propose the concept of \emph{dependency graphs} for modeling the dependencies between applications in a microservice architecture. These graphically visualize an architecture with its applications and their interrelations. Based on the dependency graphs we introduce an algorithm for constructing \emph{fault trees}. For decades fault trees have been used to model the dependability of systems. This works is the first time they are used in the context of microservice architectures. We construct qualitative fault trees and investigate quantifying based on application failure probabilities.
+
+While investigating this work the author was embedded in the engineering team of ``SoundCloud'', a ``Software as a Service'' company in the space of social networking and user-generated content, and a product with 250 million monthly users. All proposed methods were executed and qualitatively evaluated in the context of that deployed microservice architecture.
+
+The remainder of this thesis is structured as follows:
+
+In \nref{chapter:background} we introduce the terminology of this works by describing related work in the fields of dependability research and fault trees. We then introduce our own terminology model for defining the microservice architectural style.
+
+This view is then further refined in the following \nref{chapter:case_study}, where we describe the architectural evolution of the case study system and present infrastructure systems.
+
+In \nref{chapter:dependency_graph} we introduce the concept of dependency graphs and discuss the four approaches we developed for generating dependency graphs from a deployed microservice architecture.
+
+From a dependency graph we then construct a qualitative fault tree. We introduce the algorithm we developed for that in \nref{chapter:fault_trees}.
+
+We use the qualitative fault trees as basis for calculations with quantitative fault trees. In \nref{chap:quantitive_fault_tree} we propose four approaches to quantify failure probabilities of individual applications and discuss them in the context of the case study.
+
+In the closing chapters \nref{chapter:discussion} and \nref{chapter:summary} we conclusively discuss and summarize our findings.

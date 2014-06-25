@@ -1,0 +1,31 @@
+digraph chain {
+  rankdir=LR;
+  node [shape=record];
+  edge [minlen=2.5];
+
+  consumer [label="Service consumer"];
+
+  subgraph "clusterbazookalb" {
+    label="Bazooka Load Balancers\n\n";
+    //style=filled;
+    //color=lightgrey;
+
+    lb3 [style="invis"];
+    lb1 [label="bazooka-lb1.internal.example.com:8192"];
+    lb2 [label="bazooka-lb2.internal.example.com:8192"];
+  }
+
+  consumer -> lb1;
+  consumer -> lb2 [style="dotted"];
+
+  subgraph "clusterservices" {
+    label="Service instances on\nBazooka Application Hosts";
+    s1 [label="app007.internal.example.com:20039"];
+    s2 [label="app080.internal.example.com:22460"];
+    s3 [label="app123.internal.example.com:21910"];
+
+    lb1 -> s1 [style="dotted"];
+    lb1 -> s2 [];
+    lb1 -> s3 [style="dotted"];
+  }
+}

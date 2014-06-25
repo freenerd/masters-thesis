@@ -1,0 +1,174 @@
+%!TEX root = ../master_thesis.tex
+
+\chapter{Notes}
+
+This chapter includes notes by johan and removed parts.
+
+\todo{Remove this chapter before publishing}
+
+\section{General Todos}
+
+CNAME? is that even used correctly?
+
+Rechtschreibkontrolle (copy paste pdf text in google docs?)
+
+Zeitplan:
+
+\begin{tabular}{ |l|l| }
+  \hline
+  Dienstag & Check das die ganzen Bibliographies nett aussehen. Jeweils \emph{namen et al} dran bitte \\
+  Dienstag & Check das alle tables/figures label nach der caption haben \\
+  Mittwoch & Finales layout schauen (wo ist die grafik? wo ist die tabelle?) \\
+  Mittwoch & Nochmal komplett durchlesen, drucken, abgeben \\
+
+  \hline
+  x & Mehr code churn? \\
+  x & Three-tier architecture \\
+  x & \nref{subsec:fault_tree_construction} \nref{sec:case_study_execution} semantic vertice names? \\
+  x & tree pruning schon eher im algorithmus machen? \\
+  x & Tool chain for alle dependency models erklären. Vielleicht nur generell, wie ich den graph generiert habe? Kleine Tools, Go, Instrumentiert via Bash, Input/Processing/Output \\
+
+  \hline
+  Dienstag & Doppel/mehrfachleerzeichen?\\
+  Dienstag & Alle wörter von unten consistency suchen und jeweils korrigieren \\
+  Dienstag & Latex fehler beseitigen. gibt es einen ``strict'' mode?\\
+  Dienstag & Suche nach todos in code and check that nothing is left \\
+  Dienstag & Check das alle referenzen da sind (nach ? suchen) \\
+\end{tabular}
+
+\section{Consistency}
+
+Consistency with emphasize:
+\begin{tabular}{ |l|l| }
+  \hline
+ ``keyword'' & literal quotation from somewhere \\
+  \emph{keyword} & introducing a special word from elsewhere \\
+  \textbf{keyword} & highlighting special words describing this section \\
+  \hline
+\end{tabular}
+
+Words to use:
+\begin{tabular}{ |l|l| }
+  \hline
+  Yes & No \\
+  \hline
+  case study & use case \\
+  case study & soundcloud \\
+  time series & timeseries \\
+  investigation & experiment \\
+  codebase & code base \\
+  vertices | vertex &  nodes | node \\
+  subgraph & sub graph \\
+  plotted graph & graph (because a graph is a data structure)\\
+  method | mechanism | procedure & process \\
+  case study = vergangenheit & present \\
+  we & me/i \\
+  Go & go \\
+  HAProxy & haproxy \\
+  MySQL & mysql \\
+  RabbitMQ & rabbitmq \\
+  internal.example.com & int.s-cloud.net \\
+  reverse service discovery & inverse service discovery \\
+  people & humans \\
+  applications & components \\
+  quantitative/qualitative & quantitive/qualitive \\
+  service dependency & application dependency (plural)\\
+  heartbeat & hearbeat \\
+  external & vendor \\
+  tenumerate & enumerate \\
+  itemize & titemize \\
+  description & tdescription \\
+  configuration | deployment environment & environment \\
+  \hline
+\end{tabular}
+
+\chapter{Removed parts TODO:REMOVE}
+
+\section{Structure from application deploys}
+
+Assume fault tree from previous section \nref{section:fault_tree_structure}.
+
+Based on number of process instances. Therefore based on deploys of application, with instances of procs.
+
+\todo{No idea how this works, have to collaborate with troeger}
+
+\subsection{Software structure}
+
+\todo{Do i actually want to have this in here? markdown has much}
+
+\todo{I feel this point needs to be in here, because I want to make sure to show that there is a difference between "architecture at runtime" and "architecture from code". but maybe these are better words to use, instead of structure. So I might want to abandon "Software Structure" alltogether?}
+
+\subsection{Service interface}
+
+\definition{A service interface is the abstract boundary that a service exposes to its service consumers.}
+
+Abstract thing, but can be described via a service defintion language.
+
+\todo{copy from markdown}
+
+\subsection{Service consumer}
+
+\definition{A service consumer is a program, that communicates with a service to send requests.}
+
+A program might be any code, that can be executed in a runtime. In our context, a program will usually exist in the context of an application.
+
+\todo{copy definiton from markdown}
+
+
+\section{case study}
+A note of caution: the nature of engineering in a company like SoundCloud is built around the principle of being able to evolve the products quickly~\footnote{ "Move fast and break things" from Facebook}. Therefore, the implementation details as outlined here are likely to have changed already.
+
+Some cases where several applications per repository. Since they still host the application itself in that repository, we will ignore that case for now, but each time treat whole repository as being code base for that application.
+
+\section{faul trees}
+\subsubsection{Transformation rules}
+
+Given that we have a fault tree, we may transform it to an equation of boolean logic. \autoref{tab:fault_tree_bool} shows the transformation rules.
+
+\begin{table}[ht]
+  \caption{Transformation rules: Fault tree to boolean logic}
+  \label{tab:fault_tree_bool}
+  \begin{tabular}{ |l|l| }
+    \hline
+    Fault tree & Boolean logic \\
+    \hline
+    TOP Event & Result of equation \\
+    Basic Event & Operand \\
+    Intermediate Event & Connected elements enclosed in parentheses \\
+    OR-Gate & Operator \(\vee\) between connected events \\
+    AND-Gate & Opeator \(\wedge\) between connected events \\
+    \hline
+  \end{tabular}
+\end{table}
+
+Given the boolean logic equation, we may transform it to an equation with statistical probabilities to calculate the failure probability of the top event. The rules are shown in \autoref{tab:bool_prob}.
+
+\begin{table}[ht]
+  \caption{Transformation rules: Boolean logic to statistical probabilities}
+  \label{tab:bool_prob}
+  \begin{tabular}{ |l|l| }
+    \hline
+    Boolean logic & Statstical probabilities \\
+    \hline
+    Operand \emph{A} & Probability of failure \emph{P(A)} \\
+    \(A \wedge B\) & \(P(A \wedge B) = P(A \cap B) = P(A)P(B)\) \\
+    \(A \vee B\) & \(P(A \vee B) = P(A \cup B) = P(A) + P(B) -  P(A \cap B)\) \\
+    \hline
+  \end{tabular}
+\end{table}
+
+An example of these transformations can be seen in  \nref{chap:quantitive_fault_tree}.
+
+\subsection{Circular dependencies}
+\label{section:circular_dependencies}
+
+\definition{A circular dependency between application A and application B exists, if A has a service dependency on B and B has a service dependency on A.}
+
+\todo{picture of this}
+
+Circular dependencies might also be transitive, thus via another application.
+
+Circular dependencies are usually regarded as bad style \todo{citation needed}. In our case, they make it impossible to generate a fault tree, since by definition a tree does not allow circular dependencies.
+
+Still, in our case study we have seen circular dependencies happening.
+Mothership. Depends on analytics microservice. Analytics microservice has ETL job that needs to query the mothership for master data. Different processes but still everything within one application \todo{move the concrete info somewhere else, and only say: We discuss this subject more in ...}
